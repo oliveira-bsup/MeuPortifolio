@@ -19,21 +19,35 @@
       scroll-behavior: smooth;
     }
 
+    /* Paleta 2: Tech Moderno (Tema Escuro + Verde) */
     :root {
-      --cor-sidebar: #012E40;
-      --cor-conteudo-bg: #024959;
-      --cor-sobre-bg: #1B7F79;
-      --cor-accordion: chocolate;
-      --cor-texto-claro: #ffffff;
-      --cor-texto-link: #f0f0f0;
-      --cor-texto-link-hover: #ffffff;
-      --cor-badge-skill: red;
+      --cor-sidebar: #0A192F;
+      /* Azul noite (mais escuro) */
+      --cor-conteudo-bg: #112240;
+      /* Azul ardósia */
+      --cor-sobre-bg: #1B3A5E;
+      /* Azul mais claro para seção */
+      --cor-accordion: #3DCC85;
+      /* Verde menta vibrante para destaque */
+
+      --cor-texto-claro: #E6F1FF;
+      /* Texto quase branco */
+      --cor-texto-link: #A8B2D1;
+      /* Links (cinza-azulado claro) */
+      --cor-texto-link-hover: #3DCC85;
+      /* Links hover (verde) */
+      --cor-badge-skill: #3DCC85;
     }
+
+
+
+
 
     .main-container {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      background-color: var(--cor-conteudo-bg);
     }
 
     @media (min-width: 768px) {
@@ -59,9 +73,26 @@
       }
     }
 
+    .sobre-mim {
+      background-color: var(--cor-sobre-bg);
+      color: var(--cor-texto-claro);
+
+    }
 
     .skill-badge {
+      background-color: var(--cor-badge-skill);
+      color: var(--cor-texto-claro);
+    }
+
+    .accordion-button {
       background-color: var(--cor-accordion);
+      color: var(--cor-texto-claro);
+    }
+
+    h2,
+    h5 {
+      color: var(--cor-texto-claro);
+
     }
   </style>
 
