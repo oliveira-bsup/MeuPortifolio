@@ -10,6 +10,20 @@
     integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
   <style>
+    :root {
+      --cor-sidebar: #1E1E1E;
+      --cor-conteudo-bg: #2C2C2C;
+      --cor-sobre-bg: #3A3A3A;
+      --cor-accordion: #0D6EFD;
+
+      --cor-texto-claro: #F8F9FA;
+      --cor-texto-link: #CED4DA;
+      --cor-texto-link-hover: #FFFFFF;
+      --cor-badge-skill: #3B82F6;
+    }
+
+
+
     body,
     html {
       height: 100%;
@@ -19,35 +33,10 @@
       scroll-behavior: smooth;
     }
 
-    /* Paleta 2: Tech Moderno (Tema Escuro + Verde) */
-    :root {
-      --cor-sidebar: #0A192F;
-      /* Azul noite (mais escuro) */
-      --cor-conteudo-bg: #112240;
-      /* Azul ardósia */
-      --cor-sobre-bg: #1B3A5E;
-      /* Azul mais claro para seção */
-      --cor-accordion: #3DCC85;
-      /* Verde menta vibrante para destaque */
-
-      --cor-texto-claro: #E6F1FF;
-      /* Texto quase branco */
-      --cor-texto-link: #A8B2D1;
-      /* Links (cinza-azulado claro) */
-      --cor-texto-link-hover: #3DCC85;
-      /* Links hover (verde) */
-      --cor-badge-skill: #3DCC85;
-    }
-
-
-
-
-
     .main-container {
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      background-color: var(--cor-conteudo-bg);
     }
 
     @media (min-width: 768px) {
@@ -56,15 +45,14 @@
       }
     }
 
+    /*Barra Lateral(Sidebar)*/
     .sidebar {
       background-color: var(--cor-sidebar);
       color: var(--cor-texto-claro);
       flex-shrink: 0;
-      /* Faz a sidebar ter scroll se o conteúdo for maior (ex: em celular) */
       overflow-y: auto;
     }
 
-    /* Garante que a sidebar fixe no desktop e tenha altura total */
     @media (min-width: 768px) {
       .sidebar {
         height: 100vh;
@@ -73,29 +61,148 @@
       }
     }
 
+    .sidebar-profile-img {
+      width: 150px;
+      height: 150px;
+      border: 3px solid var(--cor-sobre-bg);
+    }
+
+    /* Estilo dos links de navegação da sidebar */
+    .sidebar-nav .nav-link {
+      color: var(--cor-texto-link);
+      background-color: transparent;
+      border: 1px solid transparent;
+      /* Borda transparente para manter o alinhamento */
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      /* Espaçamento entre ícone e texto */
+      margin: 0.25rem 0;
+      width: 100%;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+    }
+    .nav-link{
+      margin: 10px;
+    }
+    .sidebar-nav .nav-link:hover {
+      background-color: var(--cor-sobre-bg);
+      color: var(--cor-texto-link-hover);
+      border-color: var(--cor-sobre-bg);
+    }
+
+    /* Seção de Contato na Sidebar */
+    .sidebar-contact {
+      margin-top: 2rem;
+      border-top: 1px solid var(--cor-sobre-bg);
+      padding-top: 1.5rem;
+    }
+
+    .sidebar-contact h6 {
+      color: var(--cor-texto-link);
+    }
+
+    .sidebar-contact p {
+      color: var(--cor-texto-claro);
+      font-size: 0.9rem;
+      margin-bottom: 0.5rem;
+      word-break: break-word;
+    }
+
+    .sidebar-contact p i {
+      margin-right: 0.5rem;
+      width: 20px;
+    }
+
+    .sidebar-contact a {
+      color: var(--cor-texto-claro);
+      text-decoration: none;
+    }
+
+    .sidebar-contact a:hover {
+      text-decoration: underline;
+    }
+
+
+    /* * Área de Conteúdo Principal*/
+    .main-content {
+      background-color: var(--cor-conteudo-bg);
+      color: var(--cor-texto-claro);
+      flex-grow: 1;
+      overflow-y: auto;
+      height: 100vh;
+    }
+
+    @media (max-width: 767.98px) {
+      .main-content {
+        height: auto;
+      }
+    }
+
+    /* Adiciona um padding-top para o 1º elemento âncora */
+    .main-content section[id] {
+      scroll-margin-top: 1rem;
+      /* Espaço para não colar no topo ao rolar */
+    }
+
     .sobre-mim {
       background-color: var(--cor-sobre-bg);
-      color: var(--cor-texto-claro);
-
+      border-radius: 10px;
     }
 
+    /* * Seção de Skills*/
     .skill-badge {
-      background-color: var(--cor-badge-skill);
+      font-size: 1rem;
+      padding: 0.5em 0.75em;
+      background-color: var(--cor-badge-skill) !important;
+      /* Força a cor */
       color: var(--cor-texto-claro);
     }
 
+    .skill-category h5 {
+      color: var(--cor-texto-link);
+      border-bottom: 2px solid var(--cor-sobre-bg);
+      padding-bottom: 0.5rem;
+    }
+
+
+    /* * Seção de Cursos (Accordion)*/
     .accordion-button {
       background-color: var(--cor-accordion);
       color: var(--cor-texto-claro);
     }
 
-    h2,
-    h5 {
-      color: var(--cor-texto-claro);
+    /* Ícone do accordion (seta) */
+    .accordion-button::after {
+      filter: brightness(0) invert(1);
+      /* Deixa a seta branca */
+    }
 
+    .accordion-button:not(.collapsed) {
+      background-color: var(--cor-accordion);
+      color: var(--cor-texto-claro);
+      opacity: 0.9;
+    }
+
+    .accordion-button:focus {
+      box-shadow: 0 0 0 0.15rem rgba(0, 0, 0, 0.546);
+      /* Sombra com a cor do accordion */
+    }
+
+    .accordion-item {
+      background-color: var(--cor-conteudo-bg);
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    .accordion-body {
+      color: var(--cor-texto-claro);
+    }
+
+    .accordion-body strong {
+      color: var(--cor-texto-link);
     }
   </style>
-
 </head>
 
 <body>
@@ -107,7 +214,7 @@
 
       <nav class="col-md-3 col-lg-2 p-3 sidebar">
         <div class="text-center">
-          <img src="https://placehold.co/150x150/012E40/FFF?text=Eu" class="rounded-circle p-1 m-2 sidebar-profile-img"
+          <img src="img/eu.jpeg" class="rounded-circle p-1 m-2 sidebar-profile-img"
             alt="Foto de perfil de Oliveira">
           <h5 class="text-center mt-2">Oliveira</h5>
         </div>
@@ -165,9 +272,24 @@
       <!-- ======================== -->
       <main class="col-md-9 col-lg-10 p-3 p-md-4 main-content">
 
-        <section class="sobre-mim p-3 p-md-4 mb-4">
+        <!-- Seção Sobre Mim -->
+        <section class="sobre-mim p-3 p-md-4 mb-4" id="sobre-mim">
           <h2>Sobre Mim</h2>
-          <p>Aqui vai o resto do seu site, relatórios, tabelas, etc...</p>
+          <p>
+            Olá! Sou Leonardo Oliveira, um entusiasta de tecnologia buscando minha primeira oportunidade em TI.
+            Atualmente, sirvo no <strong>Exército Brasileiro</strong>, onde atuo com suporte de infraestrutura e
+            tecnologia.
+          </p>
+          <p>
+            Nesta função, adquiri experiência prática e robusta com <strong>Linux</strong>, realizando desde a
+            manutenção de computadores e configuração de sistemas até a <strong>criação de ISOs personalizadas</strong>
+            para atender necessidades específicas da organização.
+          </p>
+          <p>
+            Estou focado em usar essa base sólida de infraestrutura para fazer a transição para a área de
+            desenvolvimento. Sou proativo, disciplinado e estou animado para aplicar minhas habilidades de resolução de
+            problemas em um novo desafio profissional.
+          </p>
         </section>
 
         <!-- Seção Skills -->
@@ -190,7 +312,9 @@
             <div class="col-md-6 col-lg-4 mb-3 skill-category">
               <h5>Sistemas & Ferramentas</h5>
               <div class="d-flex flex-wrap gap-2 mt-2">
-                <span class="badge rounded-pill skill-badge">Linux (Ubuntu)</span>
+                <span class="badge rounded-pill skill-badge">Administração Linux</span>
+                <span class="badge rounded-pill skill-badge">Config. de Sistemas</span>
+                <span class="badge rounded-pill skill-badge">Manutenção de Hardware</span>
                 <span class="badge rounded-pill skill-badge">Git</span>
                 <span class="badge rounded-pill skill-badge">Github</span>
                 <span class="badge rounded-pill skill-badge">Excel</span>
@@ -200,143 +324,87 @@
 
             <!-- Categoria 3 -->
             <div class="col-md-6 col-lg-4 mb-3 skill-category">
-              <h5>Outros</h5>
+              <h5>Outros (Ex: Soft Skills)</h5>
               <div class="d-flex flex-wrap gap-2 mt-2">
                 <span class="badge rounded-pill skill-badge">Resolução de Problemas</span>
-                <span class="badge rounded-pill skill-badge">Comunicação</span>
+                <span class="badge rounded-pill skill-badge">Disciplina</span>
+                <span class="badge rounded-pill skill-badge">Proatividade</span>
               </div>
             </div>
           </div>
         </section>
 
+        <!-- Seção Cursos (Accordion) -->
         <!-- ======================== -->
         <!--                   Cursos -->
         <!-- ======================== -->
+
         <section class="mb-4" id="cursos">
           <h2>Cursos</h2>
           <div class="accordion accordion-flush m-2" id="accordionFlushExample">
+            <!-- Curso 1: Linux -->
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  Nome do Curso (Ex: Linux Essentials)
+                  Linux - Administrador do Sistema (Concluído)
                 </button>
               </h2>
               <div id="flush-collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  <strong>Instituição:</strong> [Nome da Escola/Plataforma, ex: Udemy, DIO, Coursera]<br>
-                  <strong>Carga Horária:</strong> [X horas]<br>
-                  <strong>Principais aprendizados:</strong> Descreva aqui o que você aprendeu, ex: "Gerenciamento de
-                  arquivos, permissões, processos e comandos básicos do terminal."<br>
-                  <em>[Se tiver certificado, coloque o link aqui]</em>
+                  <strong>Instituição:</strong> 1º Centro de Telemática de Área (Exército Brasileiro)<br>
+                  <strong>Carga Horária:</strong> 30 horas<br>
+                  <strong>Conclusão:</strong> Abril de 2024<br>
+                  <strong>Principais aprendizados:</strong> Administração de sistemas Linux, incluindo gerenciamento
+                  de arquivos (vi), permissões, processos, comandos de rede, gerenciamento de pacotes e contas de
+                  usuário.
                 </div>
               </div>
             </div>
 
+            <!-- Curso 2: Python -->
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                  Nome do Curso (Ex: Python para Análise de Dados)
+                  Programação em Python (Concluído)
                 </button>
               </h2>
               <div id="flush-collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  <strong>Instituição:</strong> [Nome da Escola/Plataforma]<br>
-                  <strong>Carga Horária:</strong> [X horas]<br>
-                  <strong>Principais aprendizados:</strong> "Manipulação de dados com Pandas, visualização com
-                  Matplotlib, e uso de Jupyter Notebooks."<br>
-                  <em>[Se tiver certificado, coloque o link aqui]</em>
+                  <strong>Instituição:</strong> SENAI Porto Alegre<br>
+                  <strong>Carga Horária:</strong> 40 horas<br>
+                  <strong>Conclusão:</strong> Setembro de 2025<br>
+                  <strong>Principais aprendizados:</strong> Codificação de programas em Python, implementação de
+                  rotinas, uso de classes e objetos, documentação de software e depuração de aplicações.
                 </div>
               </div>
             </div>
 
+            <!-- Curso 3: Front-End -->
             <div class="accordion-item">
               <h2 class="accordion-header">
                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                   data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Nome do Curso (Ex: Fundamentos de Front-End)
+                  Programação em Front-End (Cursando)
                 </button>
               </h2>
               <div id="flush-collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">
-                  <strong>Instituição:</strong> [Nome da Escola/Plataforma]<br>
-                  <strong>Carga Horária:</strong> [X horas]<br>
-                  <strong>Principais aprendizados:</strong> "Criação de sites responsivos com HTML5, CSS3, e introdução
-                  ao JavaScript para manipulação do DOM."<br>
-                  <em>[Se tiver certificado, coloque o link aqui]</em>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        <!-- ======================== -->
-        <!--                 Projetos -->
-        <!-- ======================== -->
-        <section id="projetos">
-          <h2>Projetos</h2>
-          <div class="row">
-            <!-- Projeto 1 -->
-            <div class="col-lg-3 mb-3">
-              <div class="card card-projeto d-flex flex-column">
-                <img src="https://placehold.co/600x300/1B7F79/FFF?text=Meu+Projeto+1" class="card-img-top"
-                  alt="Placeholder do Projeto 1">
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Formulario</h5>
-                  <p class="card-text flex-grow-1">
-                    Este projeto resolve o [problema X]. Utilizei [Tecnologia A, B, C] para [o que ele faz].
-                    O maior desafio foi [descreva um desafio] e aprendi a [o que você aprendeu].
-                  </p>
-                  <a href="#" class="btn btn-outline-light mt-auto">Ver Repositório no Github</a>
+                  <strong>Instituição:</strong> SENAI<br>
+                  <strong>Status:</strong> Em andamento<br>
+                  <strong>Principais aprendizados:</strong> Estudando HTML5, CSS3, JavaScript e frameworks modernos
+                  para a criação de interfaces de usuário ricas e responsivas.
                 </div>
               </div>
             </div>
 
-            <!-- Projeto 2 -->
-            <div class="col-lg-3 mb-3">
-              <div class="card card-projeto d-flex flex-column">
-                <img src="https://placehold.co/600x300/1B7F79/FFF?text=Meu+Projeto+2" class="card-img-top"
-                  alt="Placeholder do Projeto 2">
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Saude e Segurança no Trabalho</h5>
-                  <p class="card-text flex-grow-1">
-                    Este é um [tipo de projeto, ex: script de automação, website] que faz [X, Y, Z].
-                    Foi construído com [Tecnologia A, B] e está hospedado em [Onde, ex: Heroku, Vercel] (se estiver).
-                  </p>
-                  <a href="#" class="btn btn-outline-light mt-auto">Ver Demonstração</a>
-                </div>
-              </div>
-            </div>
-            <!-- Projeto 2 -->
-            <div class="col-lg-3 mb-3">
-              <div class="card card-projeto d-flex flex-column">
-                <img src="https://placehold.co/600x300/1B7F79/FFF?text=Meu+Projeto+2" class="card-img-top"
-                  alt="Placeholder do Projeto 2">
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Ferramentas da Qualidade</h5>
-                  <p class="card-text flex-grow-1">
-                    Este é um [tipo de projeto, ex: script de automação, website] que faz [X, Y, Z].
-                    Foi construído com [Tecnologia A, B] e está hospedado em [Onde, ex: Heroku, Vercel] (se estiver).
-                  </p>
-                  <a href="#" class="btn btn-outline-light mt-auto">Ver Demonstração</a>
-                </div>
-              </div>
-            </div>
-            <!-- Projeto 2 -->
-            <div class="col-lg-3 mb-3">
-              <div class="card card-projeto d-flex flex-column">
-                <img src="https://placehold.co/600x300/1B7F79/FFF?text=Meu+Projeto+2" class="card-img-top"
-                  alt="Placeholder do Projeto 2">
-                <div class="card-body d-flex flex-column">
-                  <h5 class="card-title">Hamburgueria</h5>
-                  <p class="card-text flex-grow-1">
-                    Este é um [tipo de projeto, ex: script de automação, website] que faz [X, Y, Z].
-                    Foi construído com [Tecnologia A, B] e está hospedado em [Onde, ex: Heroku, Vercel] (se estiver).
-                  </p>
-                  <a href="#" class="btn btn-outline-light mt-auto">Ver Demonstração</a>
-                </div>
-              </div>
-            </div>
+          </div>
+        </section>
+
+        <!-- ======================== -->
+        <!--                 Projetos -->
+        <!-- ======================== -->
 
 
           </div>
